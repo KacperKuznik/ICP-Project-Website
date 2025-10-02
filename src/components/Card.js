@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-export default function Card({ imageSrc, description, children }) {
+export default function Card({ imageSrc, description, popup, children, onClick  }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <div onClick={onClick}>
       {/* Card */}
       <div
         className="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
@@ -23,7 +23,7 @@ export default function Card({ imageSrc, description, children }) {
       </div>
 
       {/* Popup / Modal */}
-      {isOpen && (
+      {isOpen && popup &&(
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white rounded-xl p-6 max-w-md w-full relative">
             <button
@@ -37,6 +37,6 @@ export default function Card({ imageSrc, description, children }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
